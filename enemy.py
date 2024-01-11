@@ -6,7 +6,7 @@ class Enemy(pygame.sprite.Sprite):
         self.health = 50
         self.max_health = 50
         self.attack = 10
-        self.image = pygame.image.load("player.png")
+        self.image = pygame.image.load("enemy.png")
         self.rect = self.image.get_rect()
         self.rect.x = 100
         self.rect.y = 170
@@ -21,4 +21,4 @@ class Enemy(pygame.sprite.Sprite):
         if self.rect.y <self.position_y:
             self.rect.y+=self.velocity
         elif self.rect.y >self.position_y:
-            self.rect.y-=self.velocity
+            self.rect.y-=self.velocity  
