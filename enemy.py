@@ -5,20 +5,20 @@ class Enemy(pygame.sprite.Sprite):
         super().__init__() 
         self.health = 50
         self.max_health = 50
+        self.health_bar_length = 150
+        self.health_ratio = self.max_health/self.health_bar_length
         self.attack = 10
-        self.image = pygame.image.load("enemy.png")
+        #self.image = pygame.image.load("Sprites/monster.png")
+        self.image = pygame.Surface((40, 40))
+        self.image.fill((0, 0, 255))
         self.rect = self.image.get_rect()
-        self.rect.x = 100
-        self.rect.y = 170
-        self.velocity =5
-        self.position_x = randint(0,(400-self.rect.width))
-        self.position_y = randint(0.300)
+        self.rect.x = 450
+        self.rect.y = 150
+        self.velocity = 0.5
+        self.all_monsters = pygame.sprite.Group()  
+          
     def move(self):
-        if self.rect.x <self.position_x:
-            self.rect.x+=self.velocity
-        elif self.rect.x >self.position_x:
-            self.rect.x-=self.velocity
-        if self.rect.y <self.position_y:
-            self.rect.y+=self.velocity
-        elif self.rect.y >self.position_y:
-            self.rect.y-=self.velocity  
+        self.rect.x -=self.velocity
+    def draw(self, surface):
+        pygame.draw.rect(surface, (255,0,0),(10,10,self.health/self.health_ratio,15))
+        pygame.draw.rect(surface,(0,255,0),(10,10, self.health_bar_length,15),4)
