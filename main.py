@@ -8,6 +8,7 @@ pygame.init()
 pygame.display.set_caption("MyGame")
 background = pygame.image.load("Sprites/Map.png")
 width,height = background.get_size()
+pygame.transform_scale(background , (width * 5, height * 5 ))
 window = pygame.display.set_mode((width,height), pygame.RESIZABLE)
 
 #appel des classes
@@ -23,7 +24,7 @@ pygame.font.init()
 run = True
 scene = 0
 while run:
-        window.blit(background,(0,0))
+        window.blit(background.,(0,0))
         #hitbox = pygame.draw.rect(window, rouge, player.hitbox, 2)
         player.update()
         #draw health bar
